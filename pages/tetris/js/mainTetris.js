@@ -12,6 +12,8 @@ let currentPieceColor;
 let nextPiece;
 let nextPieceColor;
 
+let nbScore = 0;
+
 const pieces = [
     [[1, 1, 1, 1]],
 
@@ -34,13 +36,13 @@ const pieces = [
         [1, 1, 0]]
 ];
 const couleurs = [
-    "#FF0000",
-    "#00FF00",
-    "#0000FF",
-    "#FFFF00",
-    "#00FFFF",
-    "#FF00FF",
-    "#C0C0C0"
+    "#00F0F0",
+    "#0000F0",
+    "#f0a100",
+    "#f0f000",
+    "#00f000",
+    "#a000f0",
+    "#f00000"
 ];
 
 
@@ -154,7 +156,7 @@ function mergePiece() {
 
     // Check if the merged piece has reached the top of the board
     if (currentPiece.y <= 0) {
-        alert("Bien joué ! Tu as bien perdu ton temps !");
+        alert("Défaite...\nFélicitation vous avez perdu votre temps !");
         resetGame();
     }
 
@@ -170,6 +172,8 @@ function resetGame() {
 
     // Restart the game loop or perform any other initialization
     spawnPiece();
+    nbScore = 0;
+    document.getElementById("score").innerText = "Score: " + nbScore;
     // Add any additional initialization logic here
 }
 function rotatePiece() {
@@ -193,11 +197,30 @@ function movePiece(dirX, dirY) {
     }
 }
 function clearRows() {
+    let rowsCleared = 0;
+
     for (let row = ROWS - 1; row >= 0; row--) {
         if (board[row].every(cell => cell !== 0)) {
             board.splice(row, 1);
             board.unshift(Array(COLUMNS).fill(0));
+            rowsCleared++;
         }
+    }
+    console.log(rowsCleared);
+    if (rowsCleared > 0) {
+        if(rowsCleared === 1) {
+            nbScore = nbScore + 500;
+        }
+        else if(rowsCleared === 2) {
+            nbScore = nbScore + 150;
+        }
+        else if(rowsCleared === 3) {
+            nbScore = nbScore + 300;
+        }
+        else if(rowsCleared === 4) {
+            nbScore = nbScore + 500;
+        }
+        document.getElementById("score").innerText = "Score: " + nbScore;
     }
 }
 function draw() {
@@ -216,13 +239,17 @@ function drawPiece() {
     }
 }
 function update() {
+    if(nbScore >= 404) {
+        alert("Victoire !\nFélicitation vous avez perdu votre temps !");
+        resetGame();
+    }
     movePiece(0, 1);
     gameLoop();
 }
 function gameLoop() {
-    clearRows();
     draw();
 }
+
 document.addEventListener("keydown", function(event) {
     if (event.key === "a") {
         rotatePiece();
@@ -242,3 +269,4 @@ document.addEventListener("keydown", function(event) {
 generatePiece();
 spawnPiece();
 setInterval(update, 500);
+setInterval(clearRows,0.1);
