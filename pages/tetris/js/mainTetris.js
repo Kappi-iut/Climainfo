@@ -33,6 +33,16 @@ const pieces = [
     [[0, 1, 1],
         [1, 1, 0]]
 ];
+const couleurs = [
+    "#FF0000",
+    "#00FF00",
+    "#0000FF",
+    "#FFFF00",
+    "#00FFFF",
+    "#FF00FF",
+    "#C0C0C0"
+];
+
 
 const board = [];
 for (let row = 0; row < ROWS; row++) {
@@ -88,19 +98,22 @@ function drawNextPiece() {
 
 function generatePiece() {
     const randomIndex = Math.floor(Math.random() * pieces.length);
+    const randomColor = Math.floor(Math.random() * couleurs.length);
     currentPiece = pieces[randomIndex];
-    currentPieceColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+    currentPieceColor = couleurs[randomColor];
 }
 function generateNextPiece() {
     const randomIndex = Math.floor(Math.random() * pieces.length);
+    const randomColor = Math.floor(Math.random() * couleurs.length);
     nextPiece = pieces[randomIndex];
-    nextPieceColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+    nextPieceColor = couleurs[randomColor];
 }
 function spawnPiece() {
     if(!nextPiece) {
         const randomIndex = Math.floor(Math.random() * pieces.length);
+        const randomColor = Math.floor(Math.random() * couleurs.length);
         currentPiece = pieces[randomIndex];
-        currentPieceColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+        currentPieceColor = couleurs[randomColor];
         // Initial position of the piece
         currentPiece.x = Math.floor((COLUMNS - currentPiece[0].length) / 2);
         currentPiece.y = 0;
@@ -160,13 +173,11 @@ function resetGame() {
     // Add any additional initialization logic here
 }
 function rotatePiece() {
-    console.log(currentPiece);
     const originalPiece = currentPiece;
     let x = currentPiece.x;
     let y = currentPiece.y;
     currentPiece = currentPiece[0].map((_, i) => currentPiece.map(row => row[i]));
     currentPiece.reverse();
-    console.log(currentPiece);
     currentPiece.x = x;
     currentPiece.y = y;
     if (!canMove(currentPiece, 0, 0)) {
