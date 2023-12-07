@@ -6,6 +6,7 @@
     <title>Error 404 - Tetris</title>
     <link rel="stylesheet" href="../../css/style.css">
 
+
     <style>
         canvas {
             border: 1px solid #000;
@@ -34,12 +35,42 @@
         body{
             text-align: center;
         }
+        #gameMessage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.5); /* Fond transparent */
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #22B8C7;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1a919d;
+        }
     </style>
 </header>
 
 <body>
 <div>
 <h2 id="score">Score: 0</h2>
+<h2 id="level">Level: 0</h2>
+<div id="gameMessage" class="hidden">
+    <h2 id="gameMessageText">Victoire ! Félicitations, vous avez perdu votre temps !</h2>
+    <button onclick="resetGame()">Rejouer</button>
+</div>
 <canvas id="tetrisCanvas" width="300" height="600"></canvas>
 <canvas id="nextPieceCanvas" width="100" height="100"></canvas>
 </div>

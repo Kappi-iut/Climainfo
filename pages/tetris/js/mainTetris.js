@@ -13,12 +13,17 @@ let nextPiece;
 let nextPieceColor;
 
 let nbScore = 0;
+let vitesse = 450;
+let phase = 0;
 
+let isGamePaused = false;
+
+let viteseInterval = setInterval(update, vitesse);
 const pieces = [
     [[1, 1, 1, 1]],
 
-    [[1, 1],
-        [1, 1]],
+    [[1,1,1,1,1,1,1,1,1,1],
+     [1,1,1,1,1,1,1,1,1,1]],
 
     [[1, 1, 1],
         [0, 1, 0]],
@@ -153,29 +158,25 @@ function mergePiece() {
             }
         }
     }
-
     // Check if the merged piece has reached the top of the board
     if (currentPiece.y <= 0) {
-        alert("Défaite...\nFélicitation vous avez perdu votre temps !");
-        resetGame();
+        clearInterval(update);
+        displayMessage("Défaite... mais félicitations, vous avez perdu votre temps !");
+        isGamePaused = true;
     }
-
     spawnPiece();
 }
 function resetGame() {
+    window.location.reload();
     // Reset the board
     for (let row = 0; row < ROWS; row++) {
         for (let col = 0; col < COLUMNS; col++) {
             board[row][col] = 0;
         }
     }
-
-    // Restart the game loop or perform any other initialization
     spawnPiece();
-    nbScore = 0;
-    document.getElementById("score").innerText = "Score: " + nbScore;
-    // Add any additional initialization logic here
 }
+
 function rotatePiece() {
     const originalPiece = currentPiece;
     let x = currentPiece.x;
@@ -198,7 +199,6 @@ function movePiece(dirX, dirY) {
 }
 function clearRows() {
     let rowsCleared = 0;
-
     for (let row = ROWS - 1; row >= 0; row--) {
         if (board[row].every(cell => cell !== 0)) {
             board.splice(row, 1);
@@ -206,21 +206,25 @@ function clearRows() {
             rowsCleared++;
         }
     }
-    console.log(rowsCleared);
+
     if (rowsCleared > 0) {
-        if(rowsCleared === 1) {
-            nbScore = nbScore + 500;
+        const points = Math.pow(2, rowsCleared - 1) * 15;
+        nbScore += points;
+        if(nbScore>404){
+            nbScore = 404;
+            document.getElementById("score").innerText = "Score: " + nbScore;
+            clearInterval(update);
+            displayMessage("Félicitations, vous avez perdu votre temps !");
+            isGamePaused = true;
         }
-        else if(rowsCleared === 2) {
-            nbScore = nbScore + 150;
-        }
-        else if(rowsCleared === 3) {
-            nbScore = nbScore + 300;
-        }
-        else if(rowsCleared === 4) {
-            nbScore = nbScore + 500;
-        }
+        document.getElementById("level").innerText = "Level: " + phase;
         document.getElementById("score").innerText = "Score: " + nbScore;
+        if(nbScore/16 > phase) {
+            phase = Math.floor(nbScore/16);
+            vitesse = 450 + phase*15;
+            clearInterval(viteseInterval);
+            viteseInterval = setInterval(update, vitesse);
+        }
     }
 }
 function draw() {
@@ -239,19 +243,23 @@ function drawPiece() {
     }
 }
 function update() {
-    if(nbScore >= 404) {
-        alert("Victoire !\nFélicitation vous avez perdu votre temps !");
-        resetGame();
+    if (isGamePaused) {
+        return;
     }
+    console.log(vitesse);
     movePiece(0, 1);
     gameLoop();
+
 }
 function gameLoop() {
+    if (isGamePaused) {
+        return;
+    }
     draw();
 }
 
 document.addEventListener("keydown", function(event) {
-    if (event.key === "a") {
+    if (event.key === "a" || event.key === "A") {
         rotatePiece();
         gameLoop();
     } else if (event.key === "ArrowLeft") {
@@ -266,7 +274,15 @@ document.addEventListener("keydown", function(event) {
     }
 });
 
+function displayMessage(message) {
+    const gameMessage = document.getElementById("gameMessage");
+    const gameMessageText = document.getElementById("gameMessageText");
+    gameMessageText.innerText = message;
+    gameMessage.classList.remove("hidden");
+    console.log(message);
+}
+
 generatePiece();
 spawnPiece();
-setInterval(update, 500);
-setInterval(clearRows,0.1);
+
+setInterval(clearRows, 0.1);
