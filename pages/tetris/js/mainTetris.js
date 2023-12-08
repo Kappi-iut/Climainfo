@@ -22,8 +22,8 @@ let viteseInterval = setInterval(update, vitesse);
 const pieces = [
     [[1, 1, 1, 1]],
 
-    [[1,1,1,1,1,1,1,1,1,1],
-     [1,1,1,1,1,1,1,1,1,1]],
+    [[1,1],
+     [1,1]],
 
     [[1, 1, 1],
         [0, 1, 0]],
@@ -58,6 +58,7 @@ for (let row = 0; row < ROWS; row++) {
         board[row][col] = 0;
     }
 }
+
 
 function drawSquare(x, y, color) {
     context.fillStyle = color;
@@ -161,6 +162,7 @@ function mergePiece() {
     // Check if the merged piece has reached the top of the board
     if (currentPiece.y <= 0) {
         clearInterval(update);
+
         displayMessage("Défaite... mais félicitations, vous avez perdu votre temps !");
         isGamePaused = true;
     }
@@ -282,7 +284,12 @@ function displayMessage(message) {
     console.log(message);
 }
 
-generatePiece();
-spawnPiece();
+function startGame() {
+    const gameMessage = document.getElementById("startMessage");
+    gameMessage.classList.add("hidden");
+    isGamePaused = false;
+    generatePiece();
+    spawnPiece();
 
-setInterval(clearRows, 0.1);
+    setInterval(clearRows, 0.1);
+}
