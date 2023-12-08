@@ -18,6 +18,8 @@ let phase = 0;
 
 let isGamePaused = false;
 
+let depart;
+let termine;
 let viteseInterval = setInterval(update, vitesse);
 const pieces = [
     [[1, 1, 1, 1]],
@@ -165,6 +167,7 @@ function mergePiece() {
 
         displayMessage("Défaite... mais félicitations, vous avez perdu votre temps !");
         isGamePaused = true;
+        termine = new Date();
     }
     spawnPiece();
 }
@@ -218,6 +221,7 @@ function clearRows() {
             clearInterval(update);
             displayMessage("Félicitations, vous avez perdu votre temps !");
             isGamePaused = true;
+            termine = new Date();
         }
         document.getElementById("level").innerText = "Level: " + phase;
         document.getElementById("score").innerText = "Score: " + nbScore;
@@ -285,6 +289,7 @@ function displayMessage(message) {
 }
 
 function startGame() {
+    depart = new Date();
     const gameMessage = document.getElementById("startMessage");
     gameMessage.classList.add("hidden");
     isGamePaused = false;
@@ -292,4 +297,23 @@ function startGame() {
     spawnPiece();
 
     setInterval(clearRows, 0.1);
+}
+
+function endGame() {
+    var username = document.getElementById("usernameInput").value;
+
+    // Envoyer le nom d'utilisateur et d'autres données au serveur via AJAX
+    if (username.trim() !== "") {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // Gérer la réponse du serveur si nécessaire
+                console.log(xhr.responseText);
+            }
+        };
+
+        xhr.open("POST", "insererTuple.php", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send("nomJoueur=" + encodeURIComponent(username) + "&score=" + encodeURIComponent(nbScore) + "&temps=" + encodeURIComponent((termine-depart)/1000));
+    }
 }
