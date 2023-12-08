@@ -4,17 +4,36 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background: radial-gradient(circle at top left, #ff0000, #880000);
+    overflow-x: hidden;
     color: #000000;
+    background-color: white;
 }
 
+.contenu{
+    width: 100%;
+    z-index: -2;
+}
+
+.contenu h1{
+    font-family: "Dhurjati", sans-serif;
+    font-size: 50px;
+    text-align: center;
+    padding: 10px 0px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+header{
+    background: #201B2C;
+}
 nav {
     background-color: rgba(5, 21, 33, 0);
-    color: #22B8C7;
+    color: white;
     text-align: center;
     padding: 1em;
     display: flex;
-    /*position: fixed;*/
+    top: 0;
+    position: sticky;
     flex-direction: row;
     justify-content: space-between;
 }
@@ -25,34 +44,63 @@ nav > div{
     align-items: center;
 }
 
+#actuel:before{
+    content: "";
+    position: absolute;
+    left: 15px;
+    bottom: 0;
+    top:50px;
+    height: 3px;
+    width: 30px;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
 nav a {
     text-decoration: none;
-    color: #29730e;
+    color: whitesmoke;
     font-weight: bold;
     padding: 0.5em 1em;
     border-radius: 4px;
     transition: background-color 0.3s ease-in-out;
 }
 
-nav a:hover {
-    background-color: #29730e;
+nav a:hover::before{
+    content: "";
+    position: absolute;
+    left: 15px;
+    bottom: 0;
+    top:50px;
+    height: 3px;
+    width: 30px;
+    border-radius: 5px;
+    background-color: #ffffff;
+
+}
+
+.container-bouton{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    justify-content: center;
 }
 
 .boutonGenerale{
-    background-color: rgba(255, 255, 255, 0);
     color: white;
     font-family: "Dhurjati", sans-serif;
     font-size: 25px;
     background-color: #ff0000;
-    text-align: center;
-    padding: 6px 30px 8px;
-    border-radius: 20px 0px 20px 20px;
+    border: #ff0000 solid 3px;
+    padding: 2px 40px;
+    border-radius: 10px;
     text-decoration: none;
 }
 
 .boutonGenerale:hover{
     background-color: white;
-    color: black;
+    color:black;
+    transition: background-color 0.5s,
+    color 0.5s;
 }
 footer {
     position: fixed;
@@ -61,9 +109,91 @@ footer {
 }
 
 video{
-    top:0;
     width: 100%;
     height: 30%;
-    object-fit: contain;
     z-index: -1;
+}
+
+
+audio{
+    display: none;
+}
+
+.scintillant {
+    margin-right: 2px;
+    width: 20px;
+    height: 20px;
+    background-color: green;
+    border-radius: 50px;
+    border: 2px solid black;
+}
+
+.container-section{
+    display: flex;
+    flex-direction: row;
+    margin-top: 150px;
+    margin-bottom: 50px;
+    margin-right: 100px;
+    margin-left: 100px;
+    align-items: center;
+}
+
+.container-section p{
+    margin-left: 20px;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 20px;
+    text-align: justify;
+    padding: 30px 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    border-radius: 20px;
+}
+img{
+    width: 48%;
+    height: 48%;
+    border-radius: 10px;
+}
+
+.scintillant2{
+    margin-right: 2px;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50px;
+    border: 2px solid black;
+}
+.girlande{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#ndi{
+    margin-left: 200px;
+}
+
+
+.defis{
+    display: flex;
+    flex-direction: column;
+}
+
+.defis div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.defis div div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border-radius: 20px;
+    border: 2px solid black;
+    font-family: "Noto Sans", sans-serif;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+.defis div p{
+    padding: 0 30px;
 }
