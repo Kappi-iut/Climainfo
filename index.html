@@ -6,7 +6,7 @@
     <title>Nuit de l'Info - Réalisations</title>
     <link rel="stylesheet" href="css/stylePrincipal.css">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" >
     <link href="https://fonts.googleapis.com/css?family=Squada+One&display=swap" rel="stylesheet">
 </head>
 
@@ -20,9 +20,20 @@
     <nav>
         <div class="title-container"><h1>Réalisations de la Nuit de l'Info</h1></div>
         <div><a id="actuel" href="index.html">Accueil</a></div>
-        <div><a href="https://aurelien-aqr.github.io/ClimaInfo/ClimaInfo-1.0-web/index.html">Défi PRINCIPAL Nuit de
-            l'info</a></div>
-        <div><a href="rythm/jeuRythm.html">Défi jeu de rythme</a></div>
+        <div><a href="https://aurelien-aqr.github.io/ClimaInfo/ClimaInfo-1.0-web/index.html">Défi PRINCIPAL Nuit de l'info</a></div>
+        <div  id="divRythmes">
+            <a href="index.html">Défi jeu de rythme caché</a>
+            <script>
+                rythme = document.getElementById("divRythmes");
+
+                //vérifie si la touche a et le click sont enfoncés alors lance la page de rythme
+                document.addEventListener('keydown', function(event) {
+                    if (event.key === 'a') {
+                        window.location.href = 'rythm/jeuRythm.html';
+                    }
+                });
+            </script>
+        </div>
         <div><a href="pages/tetris/defiTetris.php">Défi Tetris 404 </a></div>
     </nav>
 
