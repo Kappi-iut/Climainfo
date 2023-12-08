@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 29: is not terminated with a newline. (Check strings and parenthesis.)
-(Perhaps you left out a " at the end of the first line.)
-        play music "musique 
+File "game/screens.rpy", line 366: 'xpos' is not a keyword argument or valid child of the use statement.
+    xpos 800
+        ^
 
 Ren'Py Version: Ren'Py 8.1.3.23091805
-Fri Dec  8 03:40:37 2023
+Fri Dec  8 04:50:46 2023
