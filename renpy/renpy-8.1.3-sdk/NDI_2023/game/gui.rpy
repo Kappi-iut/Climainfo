@@ -27,7 +27,7 @@ define config.check_conflicting_properties = True
 
 ## Une couleur utilisée dans l’interface pour mettre l’accent sur un texte
 ## (surbrillance).
-define gui.accent_color = '#0099cc'
+define gui.accent_color = '#22a144'
 
 ## La couleur utilisée pour le texte d’un bouton quand il n’a jamais été
 ## sélectionné ou survolé.
@@ -38,7 +38,7 @@ define gui.idle_color = '#888888'
 define gui.idle_small_color = '#aaaaaa'
 
 ## Cette couleur est utilisée pour les boutons et les barres qui sont survolées.
-define gui.hover_color = '#66c1e0'
+define gui.hover_color = '#156935'
 
 ## Cette couleur est utilisé pour le texte d’un bouton sélectionné, mais qui n’a
 ## pas le focus. Un bouton est sélectionné s’il est sur l’écran actuel ou si
@@ -52,8 +52,8 @@ define gui.insensitive_color = '#8888887f'
 ## Couleurs utilisées pour les portions de barres qui ne sont pas remplies.
 ## Elles ne sont pas utilisées directement, mais quand les fichiers d’images
 ## sont régénérés.
-define gui.muted_color = '#003d51'
-define gui.hover_muted_color = '#005b7a'
+define gui.muted_color = '#005112'
+define gui.hover_muted_color = '#007a33'
 
 ## Les couleurs utilisées pour les dialogues et les menus de choix.
 define gui.text_color = '#ffffff'
@@ -113,8 +113,8 @@ define gui.textbox_yalign = 1.0
 ## L’emplacement relatif à la zone de texte du nom du personnage en train de
 ## parler. La valeur peut être un nombre entier de pixels depuis la gauche ou le
 ## haut ou 0.5 pour le centre.
-define gui.name_xpos = 360
-define gui.name_ypos = 0
+define gui.name_xpos = 300
+define gui.name_ypos = -20
 
 ## L’alignement horizontal du nom du personnage. La valeur peut être 0.0 pour un
 ## alignement à gauche, 0.5 pour le centrer et 1.0 pour un alignement à droite.
@@ -127,7 +127,7 @@ define gui.namebox_height = None
 
 ## Les bordures de la zone contenant le nom du personnage dans l’ordre suivant
 ## gauche, haut, droite, bas.
-define gui.namebox_borders = Borders(5, 5, 5, 5)
+define gui.namebox_borders = Borders(15, 15, 15, 15)
 
 ## Si « True » (vrai), l’arrière plan de zone du nom sera en mosaïque, si
 ## « False »(faux), l’arrière plan de la zone du nom sera mis à l’échelle.
@@ -136,11 +136,11 @@ define gui.namebox_tile = False
 
 ## L’emplacement du dialogue relatif à la zone de texte. La valeur peut être un
 ## nombre entier de pixels depuis la gauche ou le haut ou 0.5 pour le centre.
-define gui.dialogue_xpos = 402
+define gui.dialogue_xpos = 300
 define gui.dialogue_ypos = 75
 
 ## La largeur maximale en pixels de la zone de dialogue.
-define gui.dialogue_width = 1116
+define gui.dialogue_width = 1350
 
 ## L’alignement horizontal de la zone de dialogue. La valeur peut être 0.0 pour
 ## un alignement à gauche, 0.5 pour le centrer et 1.0 pour un alignement à
@@ -197,10 +197,10 @@ define gui.confirm_button_text_xalign = 0.5
 
 define gui.page_button_borders = Borders(15, 6, 15, 6)
 
-define gui.quick_button_borders = Borders(15, 6, 15, 0)
+define gui.quick_button_borders = Borders(15, 6, 15, 20)
 define gui.quick_button_text_size = 21
-define gui.quick_button_text_idle_color = gui.idle_small_color
-define gui.quick_button_text_selected_color = gui.accent_color
+define gui.quick_button_text_idle_color = '#ffffff'
+define gui.quick_button_text_selected_color = '#000000'
 
 ## Vous pouvez également ajouter vos propres personnalisations en ajoutant des
 ## variables correctement nommées. Par exemple, vous pouvez décommanter la ligne
@@ -370,7 +370,7 @@ define gui.history_name_xalign = 1.0
 ## La position, largeur et alignement de la zone de dialogue.
 define gui.history_text_xpos = 255
 define gui.history_text_ypos = 3
-define gui.history_text_width = 1110
+define gui.history_text_width = 233
 define gui.history_text_xalign = 0.0
 
 
@@ -398,7 +398,7 @@ define gui.nvl_spacing = 15
 ## train de parler.
 define gui.nvl_name_xpos = 645
 define gui.nvl_name_ypos = 0
-define gui.nvl_name_width = 225
+define gui.nvl_name_width = 100
 define gui.nvl_name_xalign = 1.0
 
 ## La position, largeur et alignement de la zone de dialogue.
@@ -459,7 +459,7 @@ init python:
         gui.textbox_height = 360
         gui.name_xpos = 120
         gui.dialogue_xpos = 135
-        gui.dialogue_width = 1650
+        gui.dialogue_width = 1800
 
         ## Changer la taille et l'espacement de diverses choses.
         gui.slider_size = 54

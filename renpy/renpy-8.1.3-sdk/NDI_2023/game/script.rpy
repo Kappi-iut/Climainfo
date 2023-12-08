@@ -1,5 +1,5 @@
-﻿define p = Character('Professeur Olivier', color="#c8f3ff")
-define n = Character('Nico Naïf', color="#a77f2e")
+﻿define p = Character('Hervé Ridique', color="#b9e3f0")
+define n = Character('Côme Toulemonde', color="#e4df91")
 
 screen barre_carbone():
     zorder 100
@@ -26,15 +26,27 @@ label start:
 
     scene meeting_room with fade
 
+    play music "musique.mp3" loop volume 0.5 
+
     show olivier1 at left with moveinleft
 
-    "Le Professeur Olivier est invité pour mener les débats et fournir des informations sur le sujet."
+    "Le Professeur Ridique, expert du {b}GIEC{/b} (Groupe d'experts Intergouvernemental sur l'Evolution du Climat), est invité pour mener les débats et fournir des informations sur le sujet."
 
     show nico3 at right with moveinright
 
-    "Nico Naif, un habitant de Kappi, assiste à la réunion par curiosité."
+    "Côme Toulemonde, un habitant de Kappi, assiste à la réunion par curiosité."
 
-    show screen barre_carbone
+    "En tant que bon citoyen, vous venez participer à cette réunion."
+
+    show screen barre_carbone with dissolve
+    show arrow with dissolve
+
+    "En haut à droite, vous pouvez voir votre {b}jauge d'empreinte carbone.{/b}"
+
+    "En fonction de vos choix, elle augmentera ou pas. Soyez donc attentif, le sort de cette ville est entre vos mains !"
+
+    hide arrow with dissolve
+
 
     show olivier6 at left 
     hide olivier1 
@@ -43,7 +55,7 @@ label start:
     p "Notre pays a été touché par des phénomènes climatiques graves."
     p "Nous devons prendre des mesures sérieuses pour faire face à ces changements climatiques."
     p "Nous sommes ici pour trouver des solutions efficaces et sur le long terme, pour réduire les émissions de gaz à effet de serre, principale cause du réchauffement climatique."
-    p "Si nous n’agissons pas aujourd’hui, il sera trop tard pour limiter le réchauffement de la planète à 1,5°C."
+    p "Si nous n’agissons pas aujourd’hui, il sera trop tard pour limiter le réchauffement de la planète à {b}1,5°C.{/b}"
     p "Nous allons commencer par un temps d’échange d’idées, afin de recueillir des potentielles solutions au problème, et ce, à toutes les échelles."
     p "Car vous savez, chaque geste compte dans la lutte contre le changement climatique. Chacun de nous peut faire la différence."
 
@@ -114,7 +126,7 @@ label start:
             hide olivier1
 
             p "Planter des arbres est une excellente initiative, mais nous ne devrions pas compter uniquement sur cette solution."
-            p "Selon le GIEC, l'élimination du carbone ne devrait pas remplacer la réduction des émissions."
+            p "Selon le GIEC, l'élimination du carbone ne devrait pas remplacer la {b}réduction des émissions.{/b}"
             p "Certaines technologies peuvent avoir des conséquences négatives, et il est essentiel de se concentrer sur la conservation des écosystèmes et la réduction des émissions pour une solution plus durable."
 
         "Plantons des arbres, mais cela ne suffit pas.":
@@ -123,7 +135,7 @@ label start:
             hide olivier1
 
             p "Planter des arbres est une excellente initiative, mais nous ne devrions pas compter uniquement sur cette solution."
-            p "Selon le GIEC, l'élimination du carbone ne devrait pas remplacer la réduction des émissions."
+            p "Selon le GIEC, l'élimination du carbone ne devrait pas remplacer la {b}réduction des émissions.{/b}"
             p "Certaines technologies peuvent avoir des conséquences négatives, et il est essentiel de se concentrer sur la conservation des écosystèmes et la réduction des émissions pour une solution plus durable."
 
 
@@ -142,8 +154,8 @@ label start:
     show olivier5 at left
     hide olivier4
 
-    p "Bien sûr. L’objectif est d’atteindre la neutralité carbone d’ici 2050."
-    p "Pour ce faire le moyen le plus efficace est de se liberer des energies fosilles."
+    p "Bien sûr. L’objectif est d’atteindre la {b}neutralité carbone{/b} d’ici 2050."
+    p "Pour ce faire le moyen le plus efficace est de se libérer des {b}energies fosilles.{/b}"
     p "Elles altèrent les écosystèmes et réprésentent une part majeur des émissions de gaz à effet de serre."
 
     show olivier4 at left
@@ -170,8 +182,10 @@ label start:
             show olivier5 at left
             hide olivier3
 
-            p "Selon le GIEC, les énergies solaire et éolienne sont désormais compétitives par rapport à la production d'énergie fossile."
-            p "Leur coût a même baissé considérablement ces dernières années, ce qui les rend très attractives sur le plan économique."
+            show graphe1 behind nico4 with dissolve 
+
+            p "Selon le GIEC, les {b}énergies solaire et éolienne{/b} sont désormais compétitives par rapport à la production d'énergie fossile."
+            p "Leurs coûts ont fortement baissé depuis 2010, jusqu’à -85\% pour l’énergie solaire."
 
         "Il me semble que les énergies renouvelables sont devenues compétitives et efficaces.": 
 
@@ -179,7 +193,10 @@ label start:
             show olivier3 at left
             hide olivier4
 
-            p "C'est une excellente question. En fait, les énergies renouvelables, en particulier le solaire et l'éolien, sont devenues extrêmement compétitives et efficaces."
+            show graphe1 behind nico4 with dissolve 
+
+            p "C'est une excellente question. En fait, les énergies renouvelables, en particulier le {b}solaire et l'éolien{/b}, sont devenues extrêmement compétitives et efficaces."
+            p "Leurs coûts ont fortement baissé depuis 2010, jusqu’à -85\% pour l’énergie solaire."
 
             show olivier5 at left
             hide olivier3
@@ -189,6 +206,8 @@ label start:
 
     show olivier4 at left
     hide olivier5
+
+    hide graphe1 with dissolve
 
     show nico5 at right
     hide nico4
@@ -232,12 +251,14 @@ label start:
 
             p "Excellent choix !"
 
+            show graphe2 behind olivier2, nico4 with dissolve
+
             show olivier5 at left
             hide olivier3
 
             p "Le GIEC souligne l'importance de ces actions pour réduire notre empreinte carbone."
-            p "En optant pour les transports en commun et en limitant la consommation de viande, nous contribuons à la réduction des émissions de gaz à effet de serre."
-            p "Ces actions sont non seulement bonnes pour l'environnement, mais elles contribuent également à une transition écologique socialement juste en évitant de renforcer les inégalités."
+            p "En optant pour les {b}transports en commun{/b} et en limitant la {b}consommation de viande{/b}, nous contribuons à la réduction des émissions de gaz à effet de serre."
+            p "Ces actions sont non seulement bonnes pour l'environnement, mais elles contribuent également à une transition écologique socialement juste en {b}évitant de renforcer les inégalités.{/b}"
 
         "Acheter de la nourriture bio, un véhicule électrique et rénover son appartement pour limiter sa consommation.":
 
@@ -245,7 +266,9 @@ label start:
             show olivier3 at left
             hide olivier1
 
-            p "C'est certainement une intention louable, mais il est essentiel de considérer la dimension sociale de la transition écologique."
+            show graphe2 behind olivier2, nico4 with dissolve
+
+            p "C'est certainement une intention louable, mais il est essentiel de considérer la {b}dimension sociale{/b} de la transition écologique."
             p "Tout le monde ne peut pas se permettre ces choix d'un point de vue économique."
 
             show olivier5 at left
@@ -254,13 +277,19 @@ label start:
             p "Le GIEC met en avant l'importance de ne pas laisser de côté les plus précaires."
             p "Plutôt que des actions individuelles coûteuses, nous devons privilégier des mesures collectives qui favorisent des solutions accessibles à tous."   
 
+    p "On retient en général trois mots pour résumer ces transistions : {b}Eviter, Adopter et Améliorer l'efficacité.{/b}"
+    p "Eviter la voiture individuelle, adopter les transports publics et améliorer l'efficacité des batteries des véhicules électriques."
+    p "Ce sont les actions estimées les plus efficaces pour réduire les émissions de gaz à effet de serre individuelles."
+
+    hide graphe2 with dissolve
+
     show olivier1 at left
     hide olivier5
 
     show nico7 at right
     hide nico4
 
-    n "Mais ça va être difficile de changer faire changer leurs habitudes à des millions de gens."
+    n "Mais ça va être difficile de faire changer leurs habitudes à des millions de gens."
     n "Et pour les transports, les voitures électriques, c'est la solution, non ?"     
 
     show nico8 at right
@@ -270,7 +299,7 @@ label start:
     hide olivier1
 
     p "Changer les habitudes à grande échelle est un défi, mais les voitures électriques peuvent effectivement jouer un rôle crucial dans la réduction des émissions de gaz à effet de serre."
-    p "On ne peut pas obliger les gens à en acheter, en revanche on peut améliorer l'efficacité des batteries des véhicules électriques."
+    p "On ne peut pas obliger les gens à en acheter, en revanche on peut {b}améliorer l'efficacité des batteries{/b} des véhicules électriques."
     p "C’est essentiel pour rendre cette transition encore plus bénéfique sur le plan environnemental."
     p "C'est une combinaison d'actions individuelles et de progrès technologiques qui nous rapprochera de nos objectifs climatiques."  
 
@@ -393,8 +422,8 @@ label start:
             hide olivier1
 
             p "C'est une option, en effet."
-            p "Le GIEC confirme que le passage à des régimes alimentaires riches en protéines végétales permet une forte réduction des émissions de gaz à effet de serre."
-            p "Cela pourrait contribuer de manière significative à nos efforts pour lutter contre le changement climatique et apporter d'autres avantages tels que la préservation de la biodiversité et la sécurité alimentaire."
+            p "Le GIEC confirme que le passage à des {b}régimes alimentaires riches en protéines végétales{/b} permet une forte réduction des émissions de gaz à effet de serre."
+            p "Cela pourrait contribuer de manière significative à nos efforts pour lutter contre le changement climatique et apporter d'autres avantages tels que la préservation de la biodiversité et la {b}sécurité alimentaire.{/b}"
 
         "Non, je ne pense pas que réduire la consomation de viande soit nécessaire.":    
 
@@ -410,7 +439,7 @@ label start:
     show nico5 at right
     hide nico4
 
-    n "J’ai entendu parler de l'agroécologie, c'est quoi ça ?"       
+    n "J’ai entendu parler de l'{b}agroécologie{/b}, c'est quoi ça ?"       
 
     show nico4 at right
     hide nico5
@@ -471,6 +500,9 @@ label start:
             p "Il est compréhensible de penser ainsi, mais le GIEC met en avant la nécessité d'aides financières pour garantir une transition juste et équitable."
             p "Cela ne concerne pas seulement les coûts individuels, mais aussi la création d'un système qui favorise des choix écologiques pour tous."    
 
+
+    p "Ayant une plus grande responsabilité dans les émissions de CO2 et une capacité d’action plus grande, les pays développés doivent apporter un soutien financier de plus de {b}100 milliards de dollars{/b} par an aux pays en développement, selon le GIEC."
+
     show olivier1 at left
     hide olivier2
 
@@ -503,7 +535,32 @@ label start:
 
     p "Mesdames et Messieurs, nos échanges ont été riches et variés."
     p "Il est clair que chacun de nous a un rôle à jouer dans la lutte contre le changement climatique."
-    p "Les solutions existent, mais elles nécessitent des choix courageux et des actions concrètes."        
+    p "Les solutions existent, mais elles nécessitent des choix courageux et des actions concrètes, et ce, à toutes les échelles."
+    p "Nous nous séparons donc sur une note d'espoir, en espérant que chacun de nous puisse faire la différence."     
+
+    if carbone >= 50:
+
+        window hide
+        scene black with fade
+        centered "{i}Quelques mois plus tard, malgré les discussions riches et les possibilités de changement, la ville n'a pas réussi à mettre en œuvre les mesures nécessaires pour faire face au changement climatique.{/i}"
+
+        scene tsunami with fade
+        "{b}Malheureusement, vos choix n'ont pas contribué de manière significative à la transition écologique de la ville.{/b}"
+        "{b}Les énergies renouvelables peinent à s'implanter, l'industrie continue de générer des émissions importantes, et les transports n'ont guère évolué vers la durabilité.{/b}"
+        "{b}La lutte contre le changement climatique nécessite un engagement fort, et ce, de la part de tous les acteurs de la société. Il est temps de réfléchir à la façon dont chacun de nous peut faire une différence significative.{/b}"
+        "{b}Mais ne vous découragez pas, continuez à inspirer le changement autour de vous. La lutte contre le changement climatique est une course collective."
+        "{b}Merci d'avoir participé !{/b}"
+
+    else:
+        
+        window hide
+        scene black with fade
+        centered "{i}Quelques mois plus tard, la ville commence à mettre en œuvre des changements significatifs. Des énergies renouvelables fleurissent, l'industrie se transforme, et les transports évoluent vers la durabilité.{/i}"
+
+        scene perfect_city with fade
+        "{b}Félicitations ! Grâce à vos choix, votre ville progresse vers un avenir plus vert et durable.{/b}"
+        "{b}Continuez à inspirer le changement autour de vous. La lutte contre le changement climatique est une course collective. Merci d'avoir participé !{/b}"
+
 
 
     return

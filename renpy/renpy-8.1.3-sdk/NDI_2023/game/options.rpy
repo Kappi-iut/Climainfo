@@ -15,13 +15,13 @@
 ##
 ## La chaîne de caractère contenu dans _() est éligible à la traduction.
 
-define config.name = _("NDI_2023")
+define config.name = _("ClimaInfo")
 
 
 ## Détermine si le titre renseigné plus haut est affiché sur l'écran du menu
 ## principal Configurez-le à False (Faux) pour cacher le titre.
 
-define gui.show_name = True
+define gui.show_name = False
 
 
 ## La version du jeu.
@@ -32,7 +32,8 @@ define config.version = "1.0"
 ## Texte placé sur l'écran "À propos" du jeu. Placez le texte entre triples
 ## guillemets, et laissez une ligne entre les paragraphes.
 
-define gui.about = _p("""
+define gui.about = _p("""Réalisé par l'équipe Kappi lors de La Nuit de l'Info 2023 à Montpellier.
+""") + "\n\n" + _p("""Sources : reseauactionclimat.org, ademe.fr, ipcc.ch
 """)
 
 
@@ -40,7 +41,7 @@ define gui.about = _p("""
 ## l’exécutable. Il ne doit contenir que des caractères ASCII et ne doit pas
 ## contenir d’espace, de virgules ou de points-virgules.
 
-define build.name = "NDI_2023"
+define build.name = "ClimaInfo"
 
 
 ## Sons et musiques ############################################################
@@ -125,7 +126,7 @@ define config.window_hide_transition = Dissolve(.2)
 ## Contrôle la vitesse du texte. La valeur par défaut, 0, est infinie. Toute
 ## autre valeur est le nombre de caractères tapés par seconde.
 
-default preferences.text_cps = 0
+default preferences.text_cps = 100
 
 
 ## Le délai d’avancée automatique. Des nombres importants entraînent une longue
