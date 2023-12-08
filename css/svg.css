@@ -1,0 +1,23 @@
+#ecoc {
+    display: none;
+}
+#ecol {
+    display: none;
+}
+#ecoi {
+    display: none;
+}
+#ecom {
+    display: none;
+}
+#ecoa {
+    display: none;
+}
+#ecot {
+    display: none;
+}
+
+div{
+    display: flex;
+    width: 500px;
+}
