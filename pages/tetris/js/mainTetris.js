@@ -465,7 +465,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
         } else {
-            setTimeout(supprimerConteneur, 10000);
+            setTimeout(supprimerConteneur, 2000);
             setTimeout(apparaitreDim, 8);
         }
 
