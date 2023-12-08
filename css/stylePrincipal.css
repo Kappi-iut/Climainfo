@@ -38,6 +38,22 @@ nav {
     justify-content: space-between;
 }
 
+#pereNoelSneaky{
+    position: absolute;
+    width: 5%;
+    height: auto;
+    right: 0;
+}
+
+#pereNoelSneaky2{
+    position: absolute;
+    height: auto;
+    right: 0;
+    width: 5%;
+    margin-top: 1560px;
+    margin-right: 500px;
+}
+
 nav > div{
     display: flex;
     position : relative;
@@ -89,8 +105,8 @@ nav a:hover::before{
     color: white;
     font-family: "Dhurjati", sans-serif;
     font-size: 25px;
-    background-color: #ff0000;
-    border: #ff0000 solid 3px;
+    background-color: #f13b3b;
+    border: #f13b3b solid 3px;
     padding: 2px 40px;
     border-radius: 10px;
     text-decoration: none;
@@ -133,9 +149,8 @@ audio{
     flex-direction: row;
     margin-top: 150px;
     margin-bottom: 50px;
-    margin-right: 100px;
-    margin-left: 100px;
     align-items: center;
+    padding: 50px;
 }
 
 .container-section p{
@@ -146,6 +161,12 @@ audio{
     padding: 30px 20px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
     border-radius: 20px;
+    margin-right: 50px;
+    background-color: white;
+}
+
+container-section img{
+    margin-left: 50px;
 }
 img{
     width: 48%;
@@ -196,4 +217,22 @@ img{
 }
 .defis div p{
     padding: 0 30px;
+}
+
+#Tetris:hover{
+    transition: background 0.5s,  color 0.5s;
+    background-image: url("../images/Tetris.png");
+    background-size: contain;
+    color: white;
+    width: 100%;
+    height: 100%;
+}
+
+.rouge{
+    background-color: #f13b3b;
+    border-radius: 20px;
+}
+.vert{
+    background-color: #337c18;
+    border-radius: 20px;
 }
