@@ -28,28 +28,28 @@ const pieces = [
      [1,1]],
 
     [[1, 1, 1],
-        [0, 1, 0]],
+     [0, 1, 0]],
 
     [[1, 1, 1],
-        [1, 0, 0]],
+     [1, 0, 0]],
 
     [[1, 1, 1],
-        [0, 0, 1]],
+     [0, 0, 1]],
 
     [[1, 1, 0],
-        [0, 1, 1]],
+     [0, 1, 1]],
 
     [[0, 1, 1],
-        [1, 1, 0]]
+     [1, 1, 0]]
 ];
-const couleurs = [
+let couleurs = [
     "#00F0F0",
-    "#0000F0",
-    "#f0a100",
     "#f0f000",
-    "#00f000",
     "#a000f0",
-    "#f00000"
+    "#f0a100",
+    "#0000F0",
+    "#00f000",
+    "#f00000",
 ];
 
 
@@ -108,22 +108,19 @@ function drawNextPiece() {
 
 function generatePiece() {
     const randomIndex = Math.floor(Math.random() * pieces.length);
-    const randomColor = Math.floor(Math.random() * couleurs.length);
     currentPiece = pieces[randomIndex];
-    currentPieceColor = couleurs[randomColor];
+    currentPieceColor = couleurs[randomIndex];
 }
 function generateNextPiece() {
     const randomIndex = Math.floor(Math.random() * pieces.length);
-    const randomColor = Math.floor(Math.random() * couleurs.length);
     nextPiece = pieces[randomIndex];
-    nextPieceColor = couleurs[randomColor];
+    nextPieceColor = couleurs[randomIndex];
 }
 function spawnPiece() {
     if(!nextPiece) {
         const randomIndex = Math.floor(Math.random() * pieces.length);
-        const randomColor = Math.floor(Math.random() * couleurs.length);
         currentPiece = pieces[randomIndex];
-        currentPieceColor = couleurs[randomColor];
+        currentPieceColor = couleurs[randomIndex];
         // Initial position of the piece
         currentPiece.x = Math.floor((COLUMNS - currentPiece[0].length) / 2);
         currentPiece.y = 0;
@@ -203,19 +200,24 @@ function movePiece(dirX, dirY) {
     }
 }
 function clearRows() {
-    let rowsCleared = 0;
+    let rowsToClear = [];
+
     for (let row = ROWS - 1; row >= 0; row--) {
         if (board[row].every(cell => cell !== 0)) {
-            board.splice(row, 1);
-            board.unshift(Array(COLUMNS).fill(0));
-            rowsCleared++;
+            rowsToClear.push(row);
         }
     }
 
-    if (rowsCleared > 0) {
-        const points = Math.pow(2, rowsCleared - 1) * 15;
+    if (rowsToClear.length > 0) {
+        rowsToClear.forEach(row => {
+            board.splice(row, 1);
+            board.unshift(Array(COLUMNS).fill(0));
+        });
+
+        const points = Math.pow(2, rowsToClear.length - 1) * 10;
         nbScore += points;
-        if(nbScore>404){
+
+        if (nbScore > 404) {
             nbScore = 404;
             document.getElementById("score").innerText = "Score: " + nbScore;
             clearInterval(update);
@@ -223,16 +225,19 @@ function clearRows() {
             isGamePaused = true;
             termine = new Date();
         }
+
         document.getElementById("level").innerText = "Level: " + phase;
         document.getElementById("score").innerText = "Score: " + nbScore;
-        if(nbScore/16 > phase) {
-            phase = Math.floor(nbScore/16);
-            vitesse = 450 + phase*15;
+
+        if (nbScore / 16 > phase) {
+            phase = Math.floor(nbScore / 16);
+            vitesse = 450 + phase * 15;
             clearInterval(viteseInterval);
             viteseInterval = setInterval(update, vitesse);
         }
     }
 }
+
 function draw() {
     context.clearRect(0, 0, canvas.width, canvas.height);
     drawBoard();
@@ -249,6 +254,7 @@ function drawPiece() {
     }
 }
 function update() {
+    clearRows();
     if (isGamePaused) {
         return;
     }
@@ -295,8 +301,6 @@ function startGame() {
     isGamePaused = false;
     generatePiece();
     spawnPiece();
-
-    setInterval(clearRows, 0.1);
 }
 
 ////////////////////

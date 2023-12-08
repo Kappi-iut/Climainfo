@@ -169,6 +169,53 @@
 
     // Ajouter un écouteur d'événements pour le champ utilisateur pour mettre à jour le bouton
     document.getElementById("usernameInput").addEventListener("input", updateButtonState);
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Votre code existant...
+
+        // Fonction de comparaison personnalisée pour trier par score puis par temps
+        function compareScores(a, b) {
+            // Trie par score de manière décroissante
+            if (b.score !== a.score) {
+                return b.score - a.score;
+            }
+            // Si les scores sont égaux, trie par temps de manière croissante
+            return a.temps - b.temps;
+        }
+
+        // Récupérer les données du tableau PHP et les convertir en tableau JavaScript
+        var topScores = <?php echo json_encode($topScores); ?>;
+
+        // Trier le tableau en utilisant la fonction de comparaison personnalisée
+        topScores.sort(compareScores);
+
+        // Votre code existant...
+
+        // Fonction pour mettre à jour le tableau avec les données triées
+        function updateTable() {
+            var tableBody = document.querySelector("tbody");
+            tableBody.innerHTML = "";
+
+            var position = 1;
+            topScores.forEach(function(score) {
+                var row = document.createElement("tr");
+                row.innerHTML = `
+                <td>${position}</td>
+                <td>${score.nomJoueur}</td>
+                <td>${score.score}</td>
+                <td>${score.temps}</td>
+            `;
+                tableBody.appendChild(row);
+                position++;
+            });
+        }
+
+        // Appeler la fonction pour mettre à jour le tableau initial
+        updateTable();
+
+        // Votre code existant...
+    });
+
 </script>
 <script src="js/mainTetris.js"></script>
 </body>
