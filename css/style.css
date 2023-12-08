@@ -1,3 +1,8 @@
+#climat{
+    display: flex;
+    width: 500px;
+}
+
 body {
     font-family: 'Raleway', sans-serif;
     margin: 0;
@@ -58,7 +63,6 @@ footer {
     bottom: 0;
     width: 100%;
 }
-
 #ecoc {
     display: none;
 }
@@ -74,13 +78,9 @@ footer {
 #ecoa {
     display: none;
 }
+
 #ecot {
     display: none;
-}
-
-#climat{
-    display: flex;
-    width: 500px;
 }
 
 .lettre{
