@@ -4,32 +4,202 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nuit de l'Info - Réalisations</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/stylePrincipal.css">
+
+    <link rel="stylesheet" href="style.css" >
+    <link href="https://fonts.googleapis.com/css?family=Squada+One&display=swap" rel="stylesheet">
 </head>
+
+
 <body>
+<audio controls autoplay loop>
+    <source id="musique" src="audio/noelAudio.mp3">
+</audio>
 
 <header>
-    <div class="title-container">
-        <h1>Réalisations de la Nuit de l'Info</h1>
-    </div>
     <nav>
-        <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="pages/defi1.html">Défi 1</a></li>
-            <li><a href="pages/tetris/defiTetris.php">Défi 2</a></li>
-            <li><a href="defi3.html">Défi 3</a></li>
-        </ul>
+        <div class="title-container"><h1>Réalisations de la Nuit de l'Info</h1></div>
+        <div><a id="actuel" href="index.html">Accueil</a></div>
+        <div><a href="pages/defi1.html">Défi PRINCIPAL nuit de l'info</a></div>
+        <div><a href="defi2.html">Défi jeu de rythme</a></div>
+        <div><a href="defi3.html">Défi tetris 404 </a></div>
     </nav>
+
 </header>
 
-<section id="content">
-    <h2>Bienvenue sur la page d'accueil</h2>
-    <p>Choisissez un défi dans le menu pour voir les détails de chaque réalisation.</p>
-</section>
+<video autoplay muted loop id="myVideo">
+    <source src="video/noel.mp4" type="video/mp4">
+</video>
+<!--<script src="js/snowfall.js"></script>-->
+<div class="contenu">
 
-<footer>
-    <p>&copy; Kappi - 2023 Nuit de l'Info</p>
-</footer>
+
+    <div>
+        <h1>BIENVENUE SUR NOTRE PLATEFORME DEDIEE A L'OBJECTIF DE LA NUIT DE L'INFO : FAIRE FACE AU CHANGEMENT
+            CLIMATIQUE !</h1>
+    </div>
+    <div class="girlande">
+        <div class="scintillant"></div>
+        <div class="scintillant2"></div>
+        <div class="scintillant"></div>
+        <div class="scintillant2"></div>
+        <div class="scintillant"></div>
+        <div class="scintillant2"></div>
+        <div class="scintillant"></div>
+        <div class="scintillant2"></div>
+        <div class="scintillant"></div>
+        <div class="scintillant2"></div>
+        <div class="scintillant"></div>
+        <div class="scintillant2"></div>
+        <div class="scintillant"></div>
+        <div class="scintillant2"></div>
+        <div class="scintillant"></div>
+        <div class="scintillant2"></div>
+        <div class="scintillant"></div>
+        <div class="scintillant2"></div>
+        <div class="scintillant"></div>
+        <div class="scintillant2"></div>
+        <div class="scintillant"></div>
+        <div class="scintillant2"></div>
+        <div class="scintillant"></div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', function(event) {
+            // Vérifie si la touche appuyée est la touche "Entrée" (code 13)
+            if (event.key === 'Enter') {
+                // Redirige vers la page web de votre choix (par exemple, Google)
+                window.location.href = 'https://www.google.com';
+            }
+        });
+        // Fonction pour gérer le clignotement
+        function clignoter() {
+            var elements = document.getElementsByClassName('scintillant');
+            var elements2 = document.getElementsByClassName('scintillant2');
+
+
+            // Alterner entre afficher et masquer toutes les 500 millisecondes (ou ajustez selon vos besoins)
+            setInterval(function () {
+                for (var i = 0; i < elements.length; i++) {
+                    var element = elements[i];
+                    var backgroundColor = element.style.backgroundColor;
+
+                    element.style.backgroundColor = (backgroundColor === 'green') ? 'white' : 'green';
+
+                    var elemente = elements2[i];
+                    var backgroundColor2 = elemente.style.backgroundColor;
+
+                    elemente.style.backgroundColor = (backgroundColor2 === 'white') ? 'red' : 'white';
+                }
+            }, 500);
+
+
+            // Alterner entre afficher et masquer toutes les 500 millisecondes (ou ajustez selon vos besoins)
+
+        }
+
+        // Appeler la fonction de clignotement après le chargement du document
+        document.addEventListener('DOMContentLoaded', clignoter);
+    </script>
+    <img id="pereNoelSneaky" src="images/perenoel1.webp">
+    <img id="pereNoelSneaky2" src="images/perenoel2.png">
+
+    <div>
+        <div class="container-section rouge">
+            <img src="images/pollution-fumee.jpg" alt="pollution"/>
+            <p>
+                Le constat du changement climatique est incontestable.
+                Les scientifiques du GIEC sont formels : les activités humaines,
+                principalement les émissions de gaz à effet de serre, ont indiscutablement
+                entraîné le réchauffement planétaire. Cependant, malgré la clarté des solutions disponibles,
+                des idées fausses et des idées reçu persistent.
+            </p>
+        </div>
+        <div class="container-bouton">
+            <a class="boutonGenerale"
+               href="https://www.wwf.fr/vous-informer/actualites/10-idees-recues-sur-le-changement-climatique">Site du GEIC</a>
+        </div>
+            <div class="container-section vert">
+                <p>
+                    Notre défi pour la Nuit de l'Info 2023 consiste à concevoir une application
+                    ludique permettant de dicerner les fausses informations des solutions véritables.
+                </p>
+                <img id="ndi" src="images/ndi.png"/>
+            </div>
+
+        <div class="container-section rouge">
+            <p>
+                N'hésitez pas à explorer les différentes sections du site
+                pour en apprendre davantage et à contribuer à cette cause cruciale.
+            </p>
+        </div>
+
+        <div class="defis">
+            <h1> LES DEFIS QUE NOUS AVONS CHOISIS !</h1>
+
+            <div>
+                <div id="Tetris">
+                    <h2>Tetris 404</h2>
+                    <p>
+                        Ce Tetris apparaît lors de la
+                        page d'erreur 404.
+                        L'objectif de ce tetris est que le joueur
+                        atteigne le score de 404.
+                        A vous de placer les bonnes pieces au bon endroit pour gagner !
+                    </p>
+                </div>
+
+                <div id="rythme">
+                    <h2>Jeu de rythme</h2>
+                    <p>
+                        Grâce au konamiCode vous pourrez jouer à notre jeu !
+                        Le principe du jeu est de protéger une étoile au centre, avec
+                        votre souris, vous maitrisez un bouclier qui peut tourner autour de cette étoile
+                        pour la protéger. Des objets arrivent de tout les cotées sur le rythme de la
+                        musique. Concentrez-vous sur le rythme pour gagner !
+                    </p>
+                </div>
+
+                <div id="svg">
+                    <h2>SVG</h2>
+                    <p>
+                        Nous avons fait notre logo en svg; passez votre souris
+                        sur notre logo et découvrez la partie cacher !
+                    </p>
+                </div>
+            </div>
+
+
+            <div>
+                <div id="charlie">
+                    <h2>Ou est charlie ?</h2>
+                    <p>
+                        Un Charlie est caché sur notre site.
+                        Bonne chance pour le trouver !
+                    </p>
+                </div>
+                <div id="Noel">
+                    <h2>Last XMas</h2>
+                    <p>
+                        Notre page d'accueil est une page dans le theme de noël pour
+                        vous faire voyager jusqu'en laponie !
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<h2 class="flappy">Flappy Santa !</h2>
+
+
+<canvas id="canvas" width="276" height="414"></canvas>
+<script src="game.js"></script>
+
+<!--    <footer>-->
+<!--        <p>&copy; Kappi - 2023 Nuit de l'Info</p>-->
+<!--    </footer>-->
 
 </body>
 </html>
