@@ -58,3 +58,31 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+#ecoc {
+    display: none;
+}
+#ecol {
+    display: none;
+}
+#ecoi {
+    display: none;
+}
+#ecom {
+    display: none;
+}
+#ecoa {
+    display: none;
+}
+#ecot {
+    display: none;
+}
+
+#climat{
+    display: flex;
+    width: 500px;
+}
+
+.lettre{
+}
+
